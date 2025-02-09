@@ -1,16 +1,41 @@
-# npm
-node_modules
-package-lock.json
-npm-shrinkwrap.json
+lib-cov
+*.seed
 *.log
+*.csv
+*.dat
+*.out
+*.pid
 *.gz
-.env
-# Coveralls
-.nyc_output
+*.swp
+
+pids
+logs
+results
+tmp
+
+# Build
+public/css/main.css
+
+# Coverage reports
 coverage
 
-# Benchmarking
-benchmarks/graphs
+# API keys and secrets
+.env
 
-# ignore additional files using core.excludesFile
-# https://git-scm.com/docs/gitignore
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# ignore yarn.lock
+yarn.lock
