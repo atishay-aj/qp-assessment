@@ -4,13 +4,19 @@ import { Grocery } from "../models/grocery.model";
 
 const groceryRepo = GroceryAppDataSource.getRepository(Grocery);
 
-export const addGrocery = async (req: Request, res: Response) => {
+export const addGrocery = async (req: Request, res: Response): Promise<any> => {
   try {
     const { name, price, stock } = req.body;
+    if (!name || !price || !stock) {
+      return res
+        .status(400)
+        .json({ error: "Please provide all the required fields" });
+    }
     const grocery = groceryRepo.create({ name, price, stock });
     await groceryRepo.save(grocery);
     res.status(201).json(grocery);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { Grocery } from "./grocery.model";
 import { Order } from "./order.model";
 
@@ -13,6 +20,15 @@ export class OrderItem {
   @ManyToOne(() => Grocery)
   grocery: Grocery;
 
-  @Column()
+  @Column("int")
   quantity: number;
+
+  @Column("decimal")
+  price: number; // Store the price at the time of order
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

@@ -4,6 +4,7 @@ import {
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { OrderItem } from "./order_item.model";
 
@@ -13,7 +14,7 @@ export class Order {
   id: number;
 
   @Column()
-  userId: number; // Foreign Key to Users table
+  userId: number;
 
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })
   orderItems: OrderItem[];
@@ -23,4 +24,7 @@ export class Order {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
